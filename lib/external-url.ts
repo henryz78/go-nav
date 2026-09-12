@@ -1,23 +1,7 @@
-const AUTHOR_BAIDU_TN = "68018901_11_oem_dg";
-
 /**
- * 这是开源项目作者为了一些收益加的个人代码；
- * 如果有特殊要求，可以自行删除本函数及其调用。
+ * 保留现有函数签名以兼容上游调用链。
+ * 个人版本不注入任何作者推广或联盟追踪参数。
  */
 export function withAuthorBaiduTracking(rawUrl: string): string {
-	try {
-		const url = new URL(rawUrl);
-		if (url.protocol !== "http:" && url.protocol !== "https:") return rawUrl;
-
-		const hostname = url.hostname.toLowerCase().replace(/\.$/, "");
-		if (hostname !== "baidu.com" && !hostname.endsWith(".baidu.com")) {
-			return rawUrl;
-		}
-
-		// URLSearchParams.set 会添加 tn，并在已存在时替换原值。
-		url.searchParams.set("tn", AUTHOR_BAIDU_TN);
-		return url.toString();
-	} catch {
-		return rawUrl;
-	}
+	return rawUrl;
 }

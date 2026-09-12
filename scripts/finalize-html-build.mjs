@@ -51,14 +51,27 @@ fs.writeFileSync(
 	"utf8",
 );
 fs.writeFileSync(
+	path.join(outputDir, "_routes.json"),
+	`${JSON.stringify(
+		{
+			version: 1,
+			include: ["/nav.json", "/website.json"],
+			exclude: [],
+		},
+		null,
+		2,
+	)}\n`,
+	"utf8",
+);
+fs.writeFileSync(
 	path.join(outputDir, "部署说明.txt"),
 	[
 		"Go Nav HTML 运行时配置版",
 		"",
 		"1. 请把本目录中的全部文件上传到网站根目录。",
-		"2. 后续直接修改 nav.json 或 website.json，刷新网页即可生效。",
+		"2. Cloudflare Pages 可通过 GO_NAV_KV 的 nav.json / website.json 覆盖静态配置；KV 无值时自动回退本目录 JSON。",
 		"3. 访问 /admin/ 使用原版可视化后台，编辑后点击“导出配置”。",
-		"4. 下载 nav.json 与 website.json 后，覆盖网站根目录同名文件。",
+		"4. Cloudflare KV 模式下可把导出的 JSON 写入对应 KV key；其它静态托管仍可直接覆盖网站根目录同名文件。",
 		"5. 图片请放入 uploads/，并在 JSON 中使用 /uploads/文件名。",
 		"6. 本地预览：macOS 双击“本地预览.command”，Windows 双击“本地预览.bat”。",
 		"7. index.html 不能通过 file:// 直接读取配置；启动器会自动建立本地 HTTP 服务。",
