@@ -3,6 +3,7 @@ import { Button } from "@heroui/react";
 import { memo } from "react";
 import { getIconImageSrc } from "@/lib/icon";
 import { SearchBar } from "./search-bar";
+import { OverflowText } from "./overflow-text";
 import type { HeaderBranding, HeaderSearchModel } from "./header.types";
 import { BiMenuAltLeft, BiGlobe } from "react-icons/bi";
 
@@ -46,9 +47,10 @@ export const AppHeader = memo(function AppHeader({
 							className="h-6 w-6 object-contain"
 						/>
 					) : null}
-					<span className="text-base! max-w-32 truncate font-semibold">
-						{branding.name}
-					</span>
+					<OverflowText
+						text={branding.name}
+						className="max-w-32 text-base! font-semibold"
+					/>
 				</div>
 			</div>
 			{search && (

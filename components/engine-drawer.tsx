@@ -5,6 +5,7 @@ import { Description, Drawer, Label, ListBox } from "@heroui/react";
 import type { SearchEngine } from "@/types";
 import { HeaderDrawerShell } from "./header-drawer-shell";
 import { IconView } from "./icon-view";
+import { OverflowText } from "./overflow-text";
 import { buildSearchEngineOptions } from "./search-bar/search-bar.utils";
 
 export function EngineDrawer({
@@ -60,11 +61,13 @@ export function EngineDrawer({
 						>
 							<IconView icon={e.icon} size={20} textClassName="text-xl" />
 							<div className="flex min-w-0 flex-1 flex-col gap-0.5">
-								<Label className="truncate text-sm font-medium leading-5">
-									{e.name}
+								<Label className="min-w-0 text-sm font-medium leading-5">
+									<OverflowText text={e.name} />
 								</Label>
-								<Description className="truncate text-xs leading-4 text-muted">
-									{e.id === "local" ? "搜索本站内容" : "外部搜索引擎"}
+								<Description className="min-w-0 text-xs leading-4 text-muted">
+									<OverflowText
+										text={e.id === "local" ? "搜索本站内容" : "外部搜索引擎"}
+									/>
 								</Description>
 							</div>
 							<ListBox.ItemIndicator />

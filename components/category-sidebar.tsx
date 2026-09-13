@@ -27,6 +27,7 @@ import {
 	showSubcategoryTabsAtom,
 } from "@/lib/store/site";
 import { IconView } from "./icon-view";
+import { OverflowText } from "./overflow-text";
 import { SidebarFooterActions } from "./sidebar-footer-actions";
 
 function countSites(category: NavCategory): number {
@@ -415,7 +416,7 @@ const CategorySidebarItem = memo(function CategorySidebarItem({
 			) : (
 				<GridIcon />
 			)}
-			<span className="flex-1 truncate">{category.name}</span>
+			<OverflowText text={category.name} className="min-w-0 flex-1" />
 			{siteCount > 0 && (
 				<Chip size="sm" variant="soft" className="ml-auto">
 					{siteCount}

@@ -5,6 +5,7 @@ import { Label, ListBox, Select } from "@heroui/react";
 import type { SearchEngine } from "@/types";
 import { getIconImageSrc } from "@/lib/icon";
 import { resolveEngineSelectorWidth } from "@/lib/search-config";
+import { OverflowText } from "../overflow-text";
 
 export function SearchBarEngineSelect({
 	engineId,
@@ -87,7 +88,7 @@ function EngineContent({ engine }: { engine: SearchEngine }) {
 					</span>
 				)
 			) : null}
-			<span className="min-w-0 flex-1 truncate">{engine.name}</span>
+			<OverflowText text={engine.name} className="min-w-0 flex-1" />
 		</span>
 	);
 }

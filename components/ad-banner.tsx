@@ -24,6 +24,7 @@ import {
 	FOCUS_RING_CLASS,
 	PREVIEW_CARD_SURFACE_CLASS,
 } from "./ui/ui.constants";
+import { ClampedOverflowText, OverflowText } from "./overflow-text";
 
 interface AdBannerProps {
 	ads: AdConfig[];
@@ -90,13 +91,15 @@ function AdCard({
 						<span className="text-3xl" aria-hidden="true">
 							📢
 						</span>
-						<span className="mt-2 line-clamp-1 text-xs font-semibold">
-							{ad.title}
-						</span>
+						<OverflowText
+							text={ad.title}
+							className="mt-2 w-full text-xs font-semibold"
+						/>
 						{ad.description ? (
-							<span className="mt-1 line-clamp-2 text-[10px]! text-muted">
-								{ad.description}
-							</span>
+							<ClampedOverflowText
+								text={ad.description}
+								className="mt-1 line-clamp-2 text-[10px]! text-muted"
+							/>
 						) : null}
 					</div>
 				)}

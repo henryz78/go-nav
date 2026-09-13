@@ -14,6 +14,7 @@ import {
 	type SiteDetailEntry,
 } from "@/lib/site-detail";
 import { SiteIcon } from "../site-icon";
+import { OverflowText } from "../overflow-text";
 import { SiteDetailGallery } from "./site-detail-gallery";
 import { SiteDetailMarkdown } from "./site-detail-markdown";
 
@@ -75,8 +76,8 @@ export function SiteDetailPage({
 								/>
 							</div>
 							<div className="min-w-0">
-								<h1 className="truncate text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl dark:text-zinc-100">
-									{site.title}
+								<h1 className="text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl dark:text-zinc-100">
+									<OverflowText text={site.title} />
 								</h1>
 								{tags.length > 0 ? (
 									<div className="mt-2.5 flex flex-wrap gap-2">

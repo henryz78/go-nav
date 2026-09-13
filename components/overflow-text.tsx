@@ -26,7 +26,7 @@ export function OverflowText({
 	className?: string;
 }) {
 	const [autoRevealEnabled] = useAutoRevealOverflowPreference();
-	const containerRef = useRef<HTMLDivElement>(null);
+	const containerRef = useRef<HTMLSpanElement>(null);
 	const contentRef = useRef<HTMLSpanElement>(null);
 	const animationRef = useRef<Animation | null>(null);
 	const [isOverflowing, setIsOverflowing] = useState(false);
@@ -131,9 +131,9 @@ export function OverflowText({
 	}, [autoRevealEnabled, text]);
 
 	return (
-		<div
+		<span
 			ref={containerRef}
-			className={`overflow-hidden text-ellipsis whitespace-nowrap ${className}`}
+			className={`block overflow-hidden text-ellipsis whitespace-nowrap ${className}`}
 			title={autoRevealEnabled && isOverflowing ? text : undefined}
 			data-overflowing={isOverflowing || undefined}
 			data-auto-reveal={autoRevealEnabled || undefined}
@@ -141,7 +141,7 @@ export function OverflowText({
 			<span ref={contentRef} className="inline-block min-w-max">
 				{text}
 			</span>
-		</div>
+		</span>
 	);
 }
 
@@ -153,7 +153,7 @@ export function ClampedOverflowText({
 	className?: string;
 }) {
 	const [autoRevealEnabled] = useAutoRevealOverflowPreference();
-	const textRef = useRef<HTMLDivElement>(null);
+	const textRef = useRef<HTMLSpanElement>(null);
 	const [isOverflowing, setIsOverflowing] = useState(false);
 
 	useEffect(() => {
@@ -181,13 +181,13 @@ export function ClampedOverflowText({
 	}, [text]);
 
 	return (
-		<div
+		<span
 			ref={textRef}
 			className={className}
 			title={autoRevealEnabled && isOverflowing ? text : undefined}
 			data-overflowing={isOverflowing || undefined}
 		>
 			{text}
-		</div>
+		</span>
 	);
 }

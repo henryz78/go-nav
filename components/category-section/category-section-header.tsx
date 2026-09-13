@@ -2,6 +2,7 @@
 
 import type { NavCategory } from "@/types";
 import { IconView } from "../icon-view";
+import { OverflowText } from "../overflow-text";
 
 export function CategorySectionHeader({
 	category,
@@ -27,9 +28,10 @@ export function CategorySectionHeader({
 				{category.name}
 			</h2>
 			{showDescription && category.description ? (
-				<span className="truncate text-sm! font-medium text-muted">
-					{category.description}
-				</span>
+				<OverflowText
+					text={category.description}
+					className="min-w-0 flex-1 text-sm! font-medium text-muted"
+				/>
 			) : null}
 		</div>
 	);

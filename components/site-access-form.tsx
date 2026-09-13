@@ -10,6 +10,7 @@ import {
 import { useState } from "react";
 import { BiHide, BiRightArrowAlt, BiShow } from "react-icons/bi";
 import { getIconImageSrc } from "@/lib/icon";
+import { ClampedOverflowText, OverflowText } from "./overflow-text";
 
 export function SiteAccessForm({
 	siteName,
@@ -86,12 +87,13 @@ export function SiteAccessForm({
 							{siteName.charAt(0)}
 						</div>
 					)}
-					<div className="min-w-0">
-						<p className="truncate text-base font-semibold">{siteName}</p>
+					<div className="min-w-0 flex-1">
+						<OverflowText text={siteName} className="text-base font-semibold" />
 						{description ? (
-							<p className="line-clamp-2 text-xs leading-5 text-default-500">
-								{description}
-							</p>
+							<ClampedOverflowText
+								text={description}
+								className="line-clamp-2 text-xs leading-5 text-default-500"
+							/>
 						) : null}
 					</div>
 				</div>

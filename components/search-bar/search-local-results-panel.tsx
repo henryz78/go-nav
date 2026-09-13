@@ -4,6 +4,7 @@ import type { Key } from "@heroui/react";
 import { EmptyState, ListBox } from "@heroui/react";
 import type { LayoutConfig } from "@/types";
 import { SiteIcon } from "../site-icon";
+import { OverflowText } from "../overflow-text";
 import { SearchPanelShell } from "./search-panel-shell";
 import type { SearchBarSite } from "./search-bar.types";
 import { ACTIVE_LIST_ITEM_CLASS } from "../ui/ui.constants";
@@ -49,16 +50,18 @@ export function SearchLocalResultsPanel({
 						/>
 						<div className="min-w-0 flex-1">
 							<div className="flex items-center gap-1.5">
-								<span className="truncate text-sm font-medium">
-									{result.title}
-								</span>
-								<span className="shrink-0 rounded bg-default/80 px-1 py-px text-[10px]! font-medium text-muted leading-tight">
-									{result.categoryName}
+								<OverflowText
+									text={result.title}
+									className="min-w-0 flex-1 text-sm font-medium"
+								/>
+								<span className="min-w-0 max-w-28 shrink-0 rounded bg-default/80 px-1 py-px text-[10px]! font-medium text-muted leading-tight">
+									<OverflowText text={result.categoryName} />
 								</span>
 							</div>
-							<div className="truncate text-xs text-muted">
-								{result.description}
-							</div>
+							<OverflowText
+								text={result.description ?? ""}
+								className="text-xs text-muted"
+							/>
 						</div>
 						<ListBox.ItemIndicator />
 					</ListBox.Item>

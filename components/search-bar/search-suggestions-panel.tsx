@@ -6,6 +6,7 @@ import { SearchPanelShell } from "./search-panel-shell";
 import { DROPDOWN_MAX_HEIGHT } from "./search-bar.utils";
 import type { SuggestionItem } from "./search-bar.types";
 import { ACTIVE_LIST_ITEM_CLASS } from "../ui/ui.constants";
+import { OverflowText } from "../overflow-text";
 
 export function SearchSuggestionsPanel({
 	activeIndex,
@@ -44,7 +45,10 @@ export function SearchSuggestionsPanel({
 							<circle cx="6.5" cy="6.5" r="4.5" />
 							<path d="M10 10l4 4" strokeLinecap="round" />
 						</svg>
-						<span className="truncate text-sm">{suggestion.label}</span>
+						<OverflowText
+							text={suggestion.label}
+							className="min-w-0 flex-1 text-sm"
+						/>
 						<ListBox.ItemIndicator />
 					</ListBox.Item>
 				))}
