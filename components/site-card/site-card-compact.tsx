@@ -1,6 +1,7 @@
 "use client";
 
 import { SiteIcon } from "../site-icon";
+import { OverflowText } from "../overflow-text";
 import {
 	CARD_TRANSITION_CLASS,
 	COMPACT_CARD_SURFACE_CLASS,
@@ -35,10 +36,11 @@ export function CompactSiteCard({
 					initialClassName="text-sm!"
 				/>
 				<div className="min-w-0 flex-1">
-					<div className="truncate text-sm font-medium">{site.title}</div>
-					<div className="mt-0.5 truncate text-xs text-muted">
-						{site.description}
-					</div>
+					<OverflowText text={site.title} className="text-sm font-medium" />
+					<OverflowText
+						text={site.description ?? ""}
+						className="mt-0.5 text-xs text-muted"
+					/>
 				</div>
 			</div>
 		</SiteCardLinkShell>

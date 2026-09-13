@@ -27,7 +27,7 @@ import {
 	showSubcategoryTabsAtom,
 } from "@/lib/store/site";
 import { IconView } from "./icon-view";
-import { SubmissionSidebarButton } from "./submission-trigger";
+import { SidebarFooterActions } from "./sidebar-footer-actions";
 
 function countSites(category: NavCategory): number {
 	let count = category.sites?.length ?? 0;
@@ -371,7 +371,10 @@ export const CategorySidebar = memo(function CategorySidebar({
 					</ListBox>
 				)}
 			</div>
-			{showSubmissionAction && <SubmissionSidebarButton context={context} />}
+			<SidebarFooterActions
+				context={context}
+				showSubmissionAction={showSubmissionAction}
+			/>
 			{footer}
 		</div>
 	);

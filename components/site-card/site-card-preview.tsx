@@ -1,5 +1,6 @@
 "use client";
 
+import { ClampedOverflowText, OverflowText } from "../overflow-text";
 import {
 	CARD_TRANSITION_CLASS,
 	FOCUS_RING_CLASS,
@@ -25,20 +26,14 @@ export function PreviewSiteCard({
 		>
 			<div className={PREVIEW_CARD_CLASS}>
 				<div className="relative z-10 p-3">
-					<div className="truncate line-clamp-1 font-semibold tracking-[-0.02em] text-zinc-950 dark:text-zinc-50">
-						{site.title}
-					</div>
-					<div
+					<OverflowText
+						text={site.title}
+						className="font-semibold tracking-[-0.02em] text-zinc-950 dark:text-zinc-50"
+					/>
+					<ClampedOverflowText
+						text={site.description ?? ""}
 						className="line-clamp-2 text-xs font-medium leading-snug text-zinc-500 dark:text-zinc-400"
-						style={{
-							display: "-webkit-box",
-							WebkitLineClamp: 2,
-							WebkitBoxOrient: "vertical",
-							overflow: "hidden",
-						}}
-					>
-						{site.description}
-					</div>
+					/>
 				</div>
 
 				<div className="absolute top-[50%] left-[15%] flex h-full w-full justify-center">
